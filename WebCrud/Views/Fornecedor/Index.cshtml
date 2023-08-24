@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebCrud.Models.Fornecedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style ="color: #FF9F94; font-weight: bold;">Fornecedores</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar</a>
+</p>
+@*<div>
+    <p style="text-align: right">
+        <b>Digite o Nome, cpf ou cnpj:</b>
+        <input type="text" id="search" placeholder="Buscar">
+    </p>
+</div>*@
+<form asp-controller="Fornecedor" asp-action="Index">
+    <p>
+        <input type="text" name="SearchString" placeholder="Digite o Nome, cpf ou cnpj" style="margin-left: 10px; border-radius: 15px; width: 50%; border-color: #FF9F94;" />
+        <input type="submit" value="Filtrar" style="margin-left: 10px; border-radius: 15px; background: #FFE4E1; color: #FF9F94; border: 0 none;" />
+    </p>
+</form>
+<table class="table">
+    <thead style ="color: #FF9F94; font-weight: bold">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ_CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtNascimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ_CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtNascimento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

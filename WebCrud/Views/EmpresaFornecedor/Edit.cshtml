@@ -1,0 +1,29 @@
+﻿@model WebCrud.Models.EmpresaFornecedor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 style="color: #FF9F94;">Editar dasdos</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id_Empresa" />
+            <input type="hidden" asp-for="Id_Fornecedor" />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 15px; border-radius: 15px; background: #FFE4E1; color: #FF9F94; border: 0 none;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
